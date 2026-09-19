@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.team {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.team-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 0;
+    background: #f4f6f8;
+    padding: 10px;
+}
+
+.team-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #9b59b6;
+    border-radius: 5px;
+    margin: 6px auto 0;
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.card {
+    position: relative;
+    flex: 1 1 220px;
+    max-width: 260px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.card:first-child {
+    border-top: 4px solid #9b59b6;
+}
+
+.card:last-child {
+    border-top: 4px solid #71b7e6;
+}
+
+.card:nth-child(odd) {
+    background: #faf7fc;
+}
+
+.card:nth-child(even) {
+    background: #f4f9fd;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #9b59b6;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: 10px auto 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.avatar:hover {
+    filter: grayscale(0%);
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.role {
+    color: #666;
+    margin: 5px 0;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 1px solid #9b59b6;
+    border-radius: 6px;
+    background: white;
+    color: #9b59b6;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background: #9b59b6;
+    color: white;
+}
+
+.btn:focus {
+    outline: 2px solid #9b59b6;
+    outline-offset: 2px;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 200px;
+    }
+}

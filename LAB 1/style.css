@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    background: #676767;
+}
+
+header {
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background: #333;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: lightblue;
+}
+
+main {
+    background: linear-gradient(
+        rgba(128, 128, 128, 0.3),
+        rgba(128, 128, 128, 0.3)
+    ),
+    url('assets/bk.webp') center / cover fixed no-repeat;
+
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#about,
+#education,
+#login {
+    width: 50%;
+    padding: 30px;
+    box-sizing: border-box;
+    background: rgba(191, 189, 189, 0.8);
+    margin: 30px 0;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 10px;
+}
+
+th {
+    background: #333;
+    color: white;
+}
+
+form {
+    padding: 20px;
+    width: 300px;
+    background: rgba(161, 161, 161, 0.8);
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px 20px;
+    background: #333;
+    color: white;
+    border: none;
+}
