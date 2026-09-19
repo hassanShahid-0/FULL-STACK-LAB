@@ -10,6 +10,7 @@ body {
     margin: auto;
 }
 
+/* TASK 3 (part 1): */
 .team-title {
     text-align: center;
     color: #333;
@@ -20,6 +21,7 @@ body {
     padding: 10px;
 }
 
+/* TASK 3 (part 1): ::after */
 .team-title::after {
     content: "";
     display: block;
@@ -30,6 +32,7 @@ body {
     margin: 6px auto 0;
 }
 
+/* TASK 1: */
 .card-row {
     display: flex;
     flex-wrap: wrap;
@@ -39,6 +42,9 @@ body {
     margin: 30px 0;
 }
 
+/* TASK 1: 
+   TASK 2: 
+   TASK 4:  */
 .card {
     position: relative;
     flex: 1 1 220px;
@@ -51,6 +57,7 @@ body {
     transition: 0.3s ease;
 }
 
+/* TASK 4: */
 .card:hover {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
@@ -64,6 +71,7 @@ body {
     border-top: 4px solid #71b7e6;
 }
 
+/* TASK 6: */
 .card:nth-child(odd) {
     background: #faf7fc;
 }
@@ -72,6 +80,7 @@ body {
     background: #f4f9fd;
 }
 
+/* TASK 2: */
 .badge {
     position: absolute;
     top: 10px;
@@ -84,6 +93,7 @@ body {
     display: inline-block;
 }
 
+/* TASK 4: */
 .avatar {
     width: 90px;
     height: 90px;
@@ -94,6 +104,7 @@ body {
     transition: filter 0.3s ease;
 }
 
+/* TASK 4: on hover */
 .avatar:hover {
     filter: grayscale(0%);
 }
@@ -108,11 +119,16 @@ body {
     margin: 5px 0;
 }
 
+/* TASK 3 (part 2): ::before */
+.role::before {
+    content: "\25C6";
+    color: #9b59b6;
+    margin-right: 6px;
+    font-size: 10px;
+}
+
+/* TASK 5: */
 .actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
     margin-top: 30px;
 }
 
@@ -131,15 +147,21 @@ body {
     color: white;
 }
 
+/* :focus pseudo-class */
 .btn:focus {
     outline: 2px solid #9b59b6;
     outline-offset: 2px;
 }
 
-.btn:active {
+/* :active pseudo-class - button shrinks slightly while pressed.*/
+.actions .btn:active {
     transform: scale(0.97);
+    background: #9b59b6;
+    color: white;
+    border-color: #9b59b6;
 }
 
+/* TASK 1: responsive layout  */
 @media (max-width: 600px) {
     body {
         padding: 20px 10px;
