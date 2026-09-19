@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ventic Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="HomeTask.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar d-flex align-items-center">
+    <div class="logo d-flex align-items-center">
+      <span class="logo-box">V</span>
+      <span class="logo-text">Ventic</span>
+    </div>
+
+    <i class="bi bi-list menu-icon"></i>
+
+    <div class="search d-none d-md-flex align-items-center">
+      <i class="bi bi-search"></i>
+      <input type="text" class="form-control" placeholder="Search here...">
+    </div>
+
+    <div class="ms-auto d-flex align-items-center gap-4">
+      <span class="position-relative top-icon">
+        <i class="bi bi-bell"></i>
+        <span class="badge rounded-pill count position-absolute top-0 start-100 translate-middle">12</span>
+      </span>
+      <span class="position-relative top-icon">
+        <i class="bi bi-chat-left-dots"></i>
+        <span class="badge rounded-pill count position-absolute top-0 start-100 translate-middle">5</span>
+      </span>
+      <span class="position-relative top-icon">
+        <i class="bi bi-gift"></i>
+        <span class="badge rounded-pill count position-absolute top-0 start-100 translate-middle">2</span>
+      </span>
+
+      <strong class="d-none d-md-block small">ENGLISH</strong>
+
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end d-none d-md-block">
+          <div class="user-name">James P. Sullivan</div>
+          <div class="user-role">Super Admin</div>
+        </div>
+        <div class="avatar"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="#" class="side-link active"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+    <div class="sub-links">
+      <a href="#" class="current">Dashboard Light</a>
+      <a href="#">Dashboard Dark</a>
+      <a href="#">Orders list</a>
+      <a href="#">Event</a>
+      <a href="#">Customers</a>
+      <a href="#">Analytics</a>
+      <a href="#">Reviews</a>
+    </div>
+
+    <a href="#" class="side-link"><i class="bi bi-info-circle-fill"></i> Apps</a>
+    <a href="#" class="side-link"><i class="bi bi-activity"></i> Charts</a>
+    <a href="#" class="side-link"><i class="bi bi-star-fill"></i> Bootstrap</a>
+    <a href="#" class="side-link"><i class="bi bi-heart-fill"></i> Plugins</a>
+    <a href="#" class="side-link"><i class="bi bi-patch-check-fill"></i> Widget</a>
+    <a href="#" class="side-link"><i class="bi bi-printer-fill"></i> Forms</a>
+    <a href="#" class="side-link"><i class="bi bi-table"></i> Table</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <!-- Heading -->
+    <div class="row align-items-center mb-4">
+      <div class="col">
+        <h1 class="title">Dashboard</h1>
+        <p class="subtitle mb-0">Lorem ipsum dolor sit amet</p>
+      </div>
+      <div class="col-auto d-none d-md-flex gap-3">
+        <div class="box"><i class="bi bi-search"></i> Search here...</div>
+        <div class="box">
+          <i class="bi bi-calendar3"></i>
+          <div>
+            <strong>Change Periode</strong><br>
+            <small>August 28th - October 28th, 2021</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="row g-4 mb-4">
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card-box">
+          <div class="d-flex justify-content-between">
+            <span class="big">215 <i class="bi bi-caret-up-fill green small"></i></span>
+            <strong>Tickets</strong>
+          </div>
+          <svg viewBox="0 0 160 50" class="wave">
+            <path d="M2 30 Q12 0 22 30 T42 30 T62 30 T82 30 T102 30 T122 30 T142 30 T158 30" fill="none" stroke="#13866f" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card-box">
+          <div class="d-flex justify-content-between">
+            <span class="big">$536k <i class="bi bi-caret-down-fill text-danger small"></i></span>
+            <strong>Revenue</strong>
+          </div>
+          <svg viewBox="0 0 160 50" class="wave">
+            <path d="M2 30 Q12 0 22 30 T42 30 T62 30 T82 30 T102 30 T122 30 T142 30 T158 30" fill="none" stroke="#f8467f" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card-box">
+          <div class="d-flex justify-content-between">
+            <span class="big">652 <i class="bi bi-caret-up-fill green small"></i></span>
+            <strong>Sales</strong>
+          </div>
+          <div class="bars d-flex align-items-end justify-content-between">
+            <span style="height:15%"></span><span style="height:50%"></span>
+            <span style="height:25%"></span><span style="height:45%"></span>
+            <span style="height:25%"></span><span style="height:40%"></span>
+            <span style="height:30%"></span><span style="height:45%"></span>
+            <span style="height:35%"></span><span style="height:60%"></span>
+            <span style="height:50%"></span><span style="height:80%"></span>
+            <span style="height:100%"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card-box d-flex justify-content-between align-items-center">
+          <div>
+            <span class="big">45242</span><br>
+            <strong>Event Held</strong>
+            <div class="small-gray mt-3"><i class="bi bi-caret-up-fill green"></i> 2.4% than<br>Last Week</div>
+          </div>
+          <div class="ring"><span>66%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="row g-4">
+
+      <div class="col-12 col-lg-6">
+        <div class="card-box">
+          <div class="d-flex justify-content-between mb-3">
+            <h2 class="card-title">Best Selling</h2>
+            <div class="tabs">
+              <span class="active">Monthly</span>
+              <span>Weekly</span>
+              <span>Daily</span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-4">
+            <div class="donut">
+              <span style="top:12%; left:38%">45%</span>
+              <span style="top:52%; left:70%">25%</span>
+              <span style="top:68%; left:22%">30%</span>
+            </div>
+
+            <div>
+              <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
+              <div class="d-flex gap-4">
+                <div><i class="line pink-bg"></i><strong>21,512</strong><br><small>Ticket Left</small></div>
+                <div><i class="line green-bg"></i><strong>45,612</strong><br><small>Ticket Sold</small></div>
+                <div><i class="line gray-bg"></i><strong>275</strong><br><small>Event Held</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="card-box green-card">
+          <h2 class="card-title text-white fw-normal">Ticket Sold Today</h2>
+
+          <div class="d-flex justify-content-between align-items-end my-3">
+            <div class="huge">456,502 <small>pcs</small></div>
+            <div class="d-flex align-items-end gap-3">
+              <svg viewBox="0 0 80 40" width="80" height="40">
+                <polyline points="0,38 20,28 35,30 55,14 80,2" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="small"><strong>+4%</strong><br><small>than last day</small></div>
+            </div>
+          </div>
+
+          <div class="progress mb-4" style="height:10px">
+            <div class="progress-bar bg-white" style="width:56%"></div>
+          </div>
+
+          <p class="small-text text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
+          <a href="#" class="text-white">View detail <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
