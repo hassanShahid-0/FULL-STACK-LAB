@@ -103,9 +103,27 @@ body {
   background: #c0392b;
 }
 
-.task-count {
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 15px;
+}
+
+.task-count {
   font-size: 13px;
   color: #666;
-  text-align: right;
+}
+
+#clearCompletedBtn {
+  border: none;
+  background: none;
+  color: #4a6fdc;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#clearCompletedBtn:hover {
+  color: #3a5bc0;
 }
