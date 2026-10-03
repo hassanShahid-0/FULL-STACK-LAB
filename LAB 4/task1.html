@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<title>Student Result Dashboard</title>-->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="dashboard-header">
+    <h1>Student Result Dashboard</h1>
+    <p>A JavaScript Fundamentals Lab Project</p>
+  </header>
+
+  <section class="controls">
+    <input type="text" id="searchInput" placeholder="Search student by name...">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pass">Pass</button>
+      <button class="filter-btn" data-filter="fail">Fail</button>
+    </div>
+    <button id="sortBtn">Sort by Marks</button>
+  </section>
+
+  <section class="summary" id="summary">
+    <!-- Filled in by JavaScript: calculateSummary() + renderSummary() -->
+  </section>
+
+  <section class="card-grid" id="cardGrid">
+    <!-- Filled in by JavaScript: renderCards() -->
+  </section>
+
+  <footer class="dashboard-footer">
+    <p>&copy; 2026 JavaScript Fundamentals Lab</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
