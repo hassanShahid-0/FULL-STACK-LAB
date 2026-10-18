@@ -1,0 +1,133 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  color: #222;
+  margin: 0;
+}
+
+/* top header */
+header {
+  background: #1e5aa8;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+header p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* main container */
+main {
+  max-width: 850px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* each part of the page is a white box */
+.section {
+  background: white;
+  border-radius: 6px;
+  padding: 15px 20px;
+  margin-bottom: 18px;
+  border: 1px solid #d5dde5;
+}
+.section h2 {
+  margin-top: 0;
+  font-size: 19px;
+  color: #1e5aa8;
+  border-bottom: 2px solid #e3e9ef;
+  padding-bottom: 6px;
+}
+
+/* workshop cards */
+#workshopList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.card {
+  flex: 1 1 220px;
+  border: 1px solid #c5d0db;
+  border-radius: 6px;
+  padding: 12px;
+  background: #fafcff;
+  line-height: 1.5;
+}
+.card.selected {
+  border: 2px solid #1e5aa8;
+  background: #e6f0fc;
+}
+.card.full {
+  background: #eeeeee;
+  color: #666;
+}
+
+/* buttons */
+button {
+  background: #1e5aa8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 14px;
+  margin: 3px 3px 3px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover {
+  background: #174882;
+}
+button:disabled {
+  background: #aab4bf;
+  cursor: not-allowed;
+}
+#clearBtn {
+  background: #6b7785;
+}
+#registerBtn {
+  background: #2e8b57;
+}
+.demos button {
+  background: #e08a1e;
+}
+
+/* form controls */
+select, input[type="number"], input[type="text"] {
+  padding: 5px;
+  border: 1px solid #b5c0cb;
+  border-radius: 4px;
+}
+.options {
+  background: #f5f7fa;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/* messages */
+.error {
+  color: #c62828;
+  font-weight: bold;
+}
+.ok {
+  color: #2e7d32;
+  font-weight: bold;
+}
+#selectionMessage {
+  color: #c62828;
+}
+
+/* progress log */
+#log {
+  background: #f5f7fa;
+  border-left: 4px solid #1e5aa8;
+  padding: 10px 10px 10px 35px;
+  margin: 0;
+  font-size: 14px;
+}
+#log li {
+  margin-bottom: 4px;
+}

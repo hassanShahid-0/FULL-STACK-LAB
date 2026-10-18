@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Workshop Registration Portal</title>
+<link rel="stylesheet" href="hometask.css">
+</head>
+<body>
+
+<header>
+  <h1>Campus Workshop Registration Portal</h1>
+  <p>Select your workshops and register for the training day</p>
+</header>
+
+<main>
+
+  <div class="section">
+    <h2>Workshops</h2>
+    <div id="workshopList"></div>
+  </div>
+
+  <div class="section">
+    <h2>Your selection</h2>
+    <div id="summary"></div>
+    <p id="selectionMessage"></p>
+  </div>
+
+  <div class="section">
+    <h2>Register</h2>
+    <p>
+      Method:
+      <select id="method">
+        <option value="callbacks">Nested callbacks</option>
+        <option value="promises">Promise chain</option>
+        <option value="async">Async / await</option>
+      </select>
+      <button id="registerBtn">Register</button>
+      <button id="clearBtn">Clear selection</button>
+    </p>
+    <p class="options">
+      <label><input type="checkbox" id="failApproval"> Simulate approval failure</label>
+      &nbsp;&nbsp;
+      <label>Confirmation delay (ms):
+        <input type="number" id="confirmDelay" value="1500" min="0" step="500"></label>
+    </p>
+    <p id="status"></p>
+  </div>
+
+  <div class="section">
+    <h2>Progress log</h2>
+    <ol id="log"></ol>
+  </div>
+
+  <div class="section">
+    <h2>Confirmed registrations</h2>
+    <ul id="registrations"></ul>
+  </div>
+
+  <div class="section demos">
+    <h2>Demonstrations</h2>
+    <p>
+      <button id="demoSuccess">1. Successful registration</button>
+      <button id="demoFull">2. Full workshop</button>
+      <button id="demoApproval">3. Approval failure</button>
+      <button id="demoDelay">4. Delayed confirmation</button>
+      <button id="demoCompare">5. Promise vs async/await</button>
+    </p>
+    <p>The page stays responsive during a delay, try typing here:
+      <input type="text" placeholder="type while waiting"></p>
+  </div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="selection.js"></script>
+<script src="callbacks.js"></script>
+<script src="promises.js"></script>
+<script src="asyncawait.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
