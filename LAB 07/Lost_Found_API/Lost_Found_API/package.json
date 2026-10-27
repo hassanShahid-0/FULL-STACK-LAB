@@ -1,0 +1,18 @@
+{
+  "name": "campus-lost-found-api",
+  "version": "1.0.0",
+  "description": "Campus Lost & Found backend (Node.js core http/fs, NDJSON storage)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "smtp": "node local-smtp.js",
+    "test": "node --test tests/api.test.js"
+  },
+  "engines": { "node": ">=20" },
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^3.5.2",
+    "nodemailer": "^6.9.16",
+    "smtp-server": "^3.13.6"
+  }
+}

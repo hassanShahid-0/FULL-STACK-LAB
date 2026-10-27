@@ -1,0 +1,711 @@
+{
+  "info": {
+    "name": "Campus Lost & Found API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "itemId",
+      "value": ""
+    },
+    {
+      "key": "attachmentId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Health",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+              "pm.test('status is ok', () => pm.expect(pm.response.json().status).to.eql('ok'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "02 POST valid LOST item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+              "const b = pm.response.json();",
+              "pm.test('Item has generated string id', () => pm.expect(b.item.id).to.be.a('string'));",
+              "pm.test('createdAt is present', () => pm.expect(b.item.createdAt).to.be.a('string'));",
+              "pm.collectionVariables.set('itemId', b.item.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Black wallet\",\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"lost\",\n  \"contactName\": \"Ali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "03 POST valid FOUND item (sends local email)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 201', () => pm.response.to.have.status(201));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Blue water bottle\",\n  \"category\": \"Accessories\",\n  \"location\": \"Cafeteria\",\n  \"status\": \"found\",\n  \"contactName\": \"Ali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04 GET all items",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+              "pm.test('Contains saved item', () => pm.expect(pm.response.json().items.some(i => i.id === pm.collectionVariables.get('itemId'))).to.be.true);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        }
+      }
+    },
+    {
+      "name": "05 GET filtered status=lost",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+              "pm.test('Every item is lost', () => pm.expect(pm.response.json().items.every(i => i.status === 'lost')).to.be.true);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/items?status=lost",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "lost"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "06 GET count",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+              "pm.test('count is a number', () => pm.expect(pm.response.json().count).to.be.a('number'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/items/count",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items",
+            "count"
+          ]
+        }
+      }
+    },
+    {
+      "name": "07 POST missing title -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));",
+              "pm.test('Error mentions title', () => pm.expect(pm.response.json().error).to.include('title'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"lost\",\n  \"contactName\": \"Ali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "08 POST invalid status -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Black wallet\",\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"stolen\",\n  \"contactName\": \"Ali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "09 POST oversized title -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"lost\",\n  \"contactName\": \"Ali\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "10 POST malformed JSON -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));",
+              "pm.test('Says malformed', () => pm.expect(pm.response.json().error).to.include('Malformed'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"title\": \"Oops\", ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "11 GET unknown path -> 404",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 404', () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/unknown",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "unknown"
+          ]
+        }
+      }
+    },
+    {
+      "name": "12 POST attachment (valid PNG/PDF/JPG, choose a file)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 201', () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set('attachmentId', pm.response.json().attachment.attachmentId);",
+              "pm.test('No filesystem path leaked', () => pm.expect(pm.response.json().attachment.path).to.be.undefined);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/attachments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "attachments"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "attachment",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "13 POST attachment wrong type (choose a .txt) -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/attachments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "attachments"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "attachment",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "14 POST attachment missing field -> 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/attachments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "attachments"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "other",
+              "value": "nothing",
+              "type": "text"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "15 POST attachment too large (choose file > 2 MB) -> 413",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 413', () => pm.response.to.have.status(413));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/attachments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "attachments"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "attachment",
+              "type": "file",
+              "src": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "16 POST attachment as JSON -> 415",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 415', () => pm.response.to.have.status(415));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/attachments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "attachments"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "17 POST item with attachmentId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 201', () => pm.response.to.have.status(201));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"ID card\",\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"lost\",\n  \"contactName\": \"Ali\",\n  \"attachmentId\": \"{{attachmentId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "18 POST item with unknown attachmentId -> 404",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 404', () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "items"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Black wallet\",\n  \"category\": \"Accessories\",\n  \"location\": \"Library\",\n  \"status\": \"lost\",\n  \"contactName\": \"Ali\",\n  \"attachmentId\": \"11111111-1111-4111-8111-111111111111\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

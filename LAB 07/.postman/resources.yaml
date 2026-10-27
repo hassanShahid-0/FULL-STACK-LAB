@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: de5a0db0-a502-4a82-80b2-382b702b4b0e
+
+localResources:
+  collections:
+    - ../Lost_Found_API/Lost_Found_API/postman/Lost_Found.postman_collection.json
