@@ -1,0 +1,29 @@
+[
+  {
+    "id": "REQ-1001",
+    "studentName": "Ayesha Khan",
+    "category": "classroom repair",
+    "description": "Projector is not working in Room 12.",
+    "priority": "high",
+    "status": "open",
+    "createdAt": "2026-11-13T09:00:00.000Z"
+  },
+  {
+    "id": "REQ-1002",
+    "studentName": "Ali Ahmed",
+    "category": "ID card",
+    "description": "My student ID card is damaged.",
+    "priority": "normal",
+    "status": "open",
+    "createdAt": "2026-11-13T09:05:00.000Z"
+  },
+  {
+    "id": "REQ-175DA4D6",
+    "studentName": "Hassan",
+    "category": "classroom repair",
+    "description": "Projector is not working in classroom.",
+    "priority": "high",
+    "status": "open",
+    "createdAt": "2026-11-16T04:13:24.796Z"
+  }
+]

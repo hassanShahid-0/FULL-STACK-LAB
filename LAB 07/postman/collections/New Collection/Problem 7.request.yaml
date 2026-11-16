@@ -1,0 +1,18 @@
+$kind: http-request
+description: ""
+url: http://localhost:3001/api/requests
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"studentName\": \"Hassan\",\r
+
+    \  \"category\": \"classroom repair\",\r
+
+    \  \"description\": \"Projector is not working in classroom.\",\r
+
+    \  \"priority\": \"urgent\"\r
+
+    }"
+order: 2000

@@ -1,0 +1,2 @@
+# Problem 8 — Supporting Document Upload
+Run `npm install`, then `npm start`; open http://localhost:3002. POST `/api/upload` uses multipart/form-data field name `document`. The server accepts PDF/PNG only, max 1 MB, and checks extension, MIME type and file signature. Files are renamed to random names in `private_uploads`, which is not served publicly. Test valid PDF/PNG, no file, TXT/JPG and a file larger than 1 MB. The HTML `accept` attribute is only a browser hint; server-side validation is required.

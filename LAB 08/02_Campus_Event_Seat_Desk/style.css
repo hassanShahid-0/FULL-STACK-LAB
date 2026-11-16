@@ -1,0 +1,67 @@
+body {
+  font: 16px Arial;
+  background: #f5f6fb;
+  color: #28334a;
+}
+main {
+  max-width: 750px;
+  margin: 35px auto;
+  padding: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.seat,
+button {
+  padding: 15px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.seat {
+  background: #dce7ff;
+  color: #243d70;
+}
+.seat.selected {
+  background: #6255b5;
+  color: white;
+}
+.seat:disabled {
+  background: #cbd0d9;
+  cursor: not-allowed;
+}
+section {
+  background: white;
+  padding: 18px;
+  margin-top: 22px;
+  border-radius: 10px;
+}
+button {
+  background: #6255b5;
+  color: white;
+  margin: 5px;
+}
+#message {
+  color: #a44;
+}
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+#book {
+    background: #168477;
+    color: white;
+}
+
+#book:hover {
+    background: #10675e;
+}
+
+.seat:disabled {
+    background: #cbd0d9;
+    color: #777;
+    cursor: not-allowed;
+}

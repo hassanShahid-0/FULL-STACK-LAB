@@ -1,0 +1,6 @@
+$kind: collection
+description: ""
+variables:
+  baseUrl: http://localhost:3000
+  itemId: ""
+  attachmentId: ""

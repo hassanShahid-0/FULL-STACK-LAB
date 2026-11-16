@@ -1,0 +1,2 @@
+# Problem 6 — Postman
+Start Problem 5 (`node server.js`), import the collection and environment JSON files, select the environment, then run the collection. It includes GET all, valid POST, missing fields, wrong data type, missing ID and malformed JSON. Capture the collection runner's pass/fail screen. A bug to discuss: without server-side validation, wrong types or incomplete records could be saved; Problem 5 rejects them with 400.

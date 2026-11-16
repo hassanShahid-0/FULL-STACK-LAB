@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{baseUrl}}/api/items?status=lost"
+method: GET
+queryParams:
+  status: lost
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 200', () => pm.response.to.have.status(200));
+      pm.test('Every item is lost', () => pm.expect(pm.response.json().items.every(i => i.status === 'lost')).to.be.true);
+    language: text/javascript
+order: 5000

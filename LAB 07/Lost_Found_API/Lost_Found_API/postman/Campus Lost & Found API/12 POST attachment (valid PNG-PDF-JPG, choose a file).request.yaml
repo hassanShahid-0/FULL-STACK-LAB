@@ -1,0 +1,18 @@
+$kind: http-request
+name: 12 POST attachment (valid PNG/PDF/JPG, choose a file)
+url: "{{baseUrl}}/api/attachments"
+method: POST
+body:
+  type: formdata
+  content:
+    - type: file
+      key: attachment
+      src: []
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 201', () => pm.response.to.have.status(201));
+      pm.collectionVariables.set('attachmentId', pm.response.json().attachment.attachmentId);
+      pm.test('No filesystem path leaked', () => pm.expect(pm.response.json().attachment.path).to.be.undefined);
+    language: text/javascript
+order: 12000

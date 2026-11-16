@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Parcel Delivery Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Parcel Delivery Status Simulator</h1><label>Code style <select id="method">
+                <option value="callback">Callbacks</option>
+                <option value="promise">Promises</option>
+                <option value="async">Async/await</option>
+            </select></label><label>Failure <select id="failure">
+                <option value="none">None</option>
+                <option value="warehouse">Warehouse</option>
+                <option value="rider">Rider</option>
+            </select></label><button id="start">Start delivery</button>
+        <ol id="steps">
+            <li>Warehouse check</li>
+            <li>Rider assignment</li>
+            <li>Delivery confirmation</li>
+        </ol>
+        <p id="status">Waiting...</p>
+        <pre id="log"></pre>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>

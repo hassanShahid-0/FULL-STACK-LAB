@@ -1,0 +1,13 @@
+{
+  "name": "urgent-request-notification",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "api": "node server.js",
+    "smtp": "node smtp-receiver.js"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.0",
+    "smtp-server": "^3.13.6"
+  }
+}

@@ -4,4 +4,4 @@ workspace:
 
 localResources:
   collections:
-    - ../Lost_Found_API/Lost_Found_API/postman/Lost_Found.postman_collection.json
+    - ../Lost_Found_API/Lost_Found_API/postman/Campus Lost & Found API

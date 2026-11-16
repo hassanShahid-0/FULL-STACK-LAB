@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "Student Support API Tests",
+    "description": "Six tests for Problem 5. Start the API on port 3000.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1 - Read all requests",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 status',()=>pm.response.to.have.status(200));",
+              "pm.test('data is array',()=>pm.expect(pm.response.json().data).to.be.an('array'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 - Create valid request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"studentName\": \"Hassan Shahid\",\n  \"category\": \"equipment\",\n  \"description\": \"A classroom computer is not starting.\",\n  \"priority\": \"high\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 created',()=>pm.response.to.have.status(201));",
+              "pm.test('id returned',()=>pm.expect(pm.response.json().data.id).to.be.a('string'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 - Missing fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"studentName\": \"Hassan\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('400 invalid',()=>pm.response.to.have.status(400));",
+              "pm.test('message returned',()=>pm.expect(pm.response.json().message).to.be.a('string'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 - Wrong data type",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"studentName\": 123, \"category\": \"equipment\", \"description\": \"Broken computer in lab\", \"priority\": \"high\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('400 invalid',()=>pm.response.to.have.status(400));",
+              "pm.test('success false',()=>pm.expect(pm.response.json().success).to.eql(false));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5 - Missing record",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests/REQ-DOES-NOT-EXIST"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('404 not found',()=>pm.response.to.have.status(404));",
+              "pm.test('not found message',()=>pm.expect(pm.response.json().message).to.eql('Request not found.'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6 - Malformed JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/requests"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"studentName\": \"Hassan\", ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('400 malformed',()=>pm.response.to.have.status(400));",
+              "pm.test('malformed message',()=>pm.expect(pm.response.json().message).to.include('Malformed JSON'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
